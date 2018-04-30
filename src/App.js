@@ -6,13 +6,16 @@ import {
   View
 } from 'react-native';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import Reducers from './reducers';
-import SuperheroesList from './components/superheroesList';
+//import {createStore} from 'redux';
+//import Reducers from './reducers';
+//import SuperheroesList from './components/superheroesList';
 import TopBarLis from './components/TabBarList';
+import configureStore from './configureStore'
+
+let store = configureStore()
 
 const App = () => (
-  <Provider store={createStore(Reducers)}>
+  <Provider store={store}>
       <TopBarLis/>
   </Provider>
 )
