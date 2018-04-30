@@ -9,12 +9,11 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import Reducers from './reducers';
 import SuperheroesList from './components/superheroesList';
+import TopBarLis from './components/TabBarList';
 
 const App = () => (
   <Provider store={createStore(Reducers)}>
-    <View>
-      <SuperheroesList/>
-    </View>
+      <TopBarLis/>
   </Provider>
 )
 
