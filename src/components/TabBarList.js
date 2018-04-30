@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Text, View, Dimensions, StyleSheet} from 'react-native';
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import type, {Route, NavigationState} from 'react-native-tab-view/types';
+import * as action from '../actions'
+import {connect} from 'react-redux';
 
 const initialLayout = {
     height: 0,
@@ -18,9 +20,9 @@ const Contact = () => <View style={[styles.container, styles.tabbar]}>
     <Text>data</Text>
 </View>
 
-export default class TopBarList extends Component {
-    state = {
-        index: 1,
+class TopBarList extends Component {
+    /*state = {
+        index: 0,
         routes: [
             {
                 key: 'article',
@@ -31,8 +33,13 @@ export default class TopBarList extends Component {
             }
         ]
     }
+    */
 
-    _handleIndexChange = index => this.setState({index})
+    //_handleIndexChange = index => this.setState({index})
+    _handleIndexChange = index => {
+        this.props.tabsId.index = index
+        this.props.selected_tab(this.props.tabsId)
+    }
 
     _renderHeader = props => (<TabBar
         {...props}/>)
@@ -42,7 +49,7 @@ export default class TopBarList extends Component {
     render() {
         return (<TabViewAnimated
             style={[styles.container, this.props.style]}
-            navigationState={this.state}
+            navigationState={this.props.tabsId}
             renderScene={this._renderScene}
             renderHeader={this._renderHeader}
             onIndexChange={this._handleIndexChange}
@@ -68,3 +75,10 @@ const styles = StyleSheet.create({
         fontWeight: '400'
     }
 })
+
+
+const mapStateToProps = state => {
+    return {tabsId : state.tabId}
+}
+
+export default connect(mapStateToProps, action)(TopBarList)
