@@ -9,6 +9,8 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.3",
+    "react-native-gesture-handler": "^1.0.0-alpha.43",
+    "react-native-tab-view": "0.0.77",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },
