@@ -17,7 +17,6 @@ export const getDateFailure = (data) => {
 }
 
 export const fetchData = () => {
-    // return function 
     return (dispatch) => {
         dispatch(getData())
         getDataApi()

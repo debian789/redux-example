@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View, Dimensions, StyleSheet} from 'react-native';
+import {Text, View, Dimensions, StyleSheet, ScrollView} from 'react-native';
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import type, {Route, NavigationState} from 'react-native-tab-view/types';
 import * as action from '../actions'
 import {connect} from 'react-redux';
+import SuperheroesList from './superheroesList'
 
 const initialLayout = {
     height: 0,
@@ -12,39 +13,30 @@ const initialLayout = {
         .width
 }
 
+/*
 const Article = () => <View style={[styles.container, styles.tabbar]}>
     <Text>hola</Text>
 </View>
 
 const Contact = () => <View style={[styles.container, styles.tabbar]}>
-    <Text>data</Text>
+    <ScrollView>
+        <SuperheroesList></SuperheroesList>
+    </ScrollView>
 </View>
+*/
 
 class TopBarList extends Component {
-    /*state = {
-        index: 0,
-        routes: [
-            {
-                key: 'article',
-                title: 'Article'
-            }, {
-                key: 'contact',
-                title: 'Contact'
-            }
-        ]
-    }
-    */
-
     //_handleIndexChange = index => this.setState({index})
     _handleIndexChange = index => {
         this.props.tabsId.index = index
-        this.props.selected_tab(this.props.tabsId)
+        this
+            .props
+            .selected_tab(this.props.tabsId)
     }
 
-    _renderHeader = props => (<TabBar
-        {...props}/>)
+    _renderHeader = props => (<TabBar {...props}/>)
 
-    _renderScene = SceneMap({article: Article, contact: Contact})
+    _renderScene = SceneMap({articles: SuperheroesList, contactd: SuperheroesList})
 
     render() {
         return (<TabViewAnimated
@@ -53,7 +45,8 @@ class TopBarList extends Component {
             renderScene={this._renderScene}
             renderHeader={this._renderHeader}
             onIndexChange={this._handleIndexChange}
-            initialLayout={initialLayout}/>)
+            initialLayout={initialLayout}
+            useNativeDriver/>)
     }
 }
 
@@ -76,9 +69,8 @@ const styles = StyleSheet.create({
     }
 })
 
-
 const mapStateToProps = state => {
-    return {tabsId : state.tabId}
+    return {tabsId: state.tabId}
 }
 
 export default connect(mapStateToProps, action)(TopBarList)
