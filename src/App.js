@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 import {Provider} from 'react-redux';
-import TapBarComponent from './components/TabBar.component';
+import TapBarComponent from './components/tabBar.component';
 import configureStore from './configureStore'
 
 let store = configureStore()

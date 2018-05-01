@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import {fetchData} from '../actions'
 
@@ -17,9 +17,10 @@ class ShowListComponent extends Component {
                 .data
                 .map((tv, index) => {
                     return (
-                        <View key={index}>
-                            <Text>{tv.show.name}</Text>
-                        </View>
+                        
+                            <View key={index}>
+                                <Text>{tv.show.name}</Text>
+                            </View>
                     );
                 })
         }
@@ -30,10 +31,12 @@ class ShowListComponent extends Component {
             <View style={{
                 backgroundColor: 'red'
             }}>
+            <ScrollView>
                 {this.props.dataTvMaze.isFeching && <Text>Loading</Text>}
                 {this.props.dataTvMaze.data.length
                     ? this.getTvShows()
                     : null}
+                    </ScrollView>
             </View>
         )
     }
