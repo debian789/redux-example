@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {fetchData} from '../actions'
 
-class SuperheroesList extends Component {
+class ShowListComponent extends Component {
     componentWillMount() {
         this
             .props
@@ -55,4 +55,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SuperheroesList);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowListComponent);

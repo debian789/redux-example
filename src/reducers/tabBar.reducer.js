@@ -2,11 +2,11 @@ const initialState = {
     index: 0,
     routes: [
         {
-            key: 'article',
-            title: 'Article'
+            key: 'shows',
+            title: 'Shows'
         }, {
-            key: 'contact',
-            title: 'Contact'
+            key: 'actors',
+            title: 'Actors'
         }
     ]
 

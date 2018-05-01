@@ -1,10 +1,8 @@
 import {combineReducers} from 'redux';
-import superheroesreducer from './superheroesreducer';
-import tabBarReducer from './tabBarReducer'
-import dataReducer from './dataReducer'
+import tabBarReducer from './tabBar.reducer'
+import dataReducer from './data.reducer'
 
 export default combineReducers({
-    superheroes: superheroesreducer,
     tabId: tabBarReducer,
     data: dataReducer
 })

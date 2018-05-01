@@ -4,7 +4,8 @@ import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import type, {Route, NavigationState} from 'react-native-tab-view/types';
 import * as action from '../actions'
 import {connect} from 'react-redux';
-import SuperheroesList from './superheroesList'
+import ShowListComponent from './showList.component.js'
+import ActorListComponent from './actorList.component.js'
 
 const initialLayout = {
     height: 0,
@@ -25,7 +26,7 @@ const Contact = () => <View style={[styles.container, styles.tabbar]}>
 </View>
 */
 
-class TopBarList extends Component {
+class TopBarComponent extends Component {
     //_handleIndexChange = index => this.setState({index})
     _handleIndexChange = index => {
         this.props.tabsId.index = index
@@ -36,7 +37,7 @@ class TopBarList extends Component {
 
     _renderHeader = props => (<TabBar {...props}/>)
 
-    _renderScene = SceneMap({articles: SuperheroesList, contactd: SuperheroesList})
+    _renderScene = SceneMap({shows: ShowListComponent, actors: ShowListComponent})
 
     render() {
         return (<TabViewAnimated
@@ -73,4 +74,4 @@ const mapStateToProps = state => {
     return {tabsId: state.tabId}
 }
 
-export default connect(mapStateToProps, action)(TopBarList)
+export default connect(mapStateToProps, action)(TopBarComponent)

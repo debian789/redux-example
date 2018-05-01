@@ -1,5 +1,6 @@
 import {FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE} from '../constants'
 import getDataApi from '../api'
+
 export const selected_tab = (tabId) => {
     return {type: 'selected_tab', payload: tabId}
 }
