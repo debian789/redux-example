@@ -17,8 +17,7 @@ class ShowListComponent extends Component {
             return dataTvMaze
                 .data
                 .map((tv, index) => {
-                    return (
-                        
+                    return (                        
                             <View key={index} style={ShowListStyle.itemList}>
                                 <Text>{tv.show.name}</Text>
                             </View>

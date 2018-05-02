@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {View, Text, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import {fetchDataActors} from '../../actions'
-import {ActorListStyle} from './actorList.style'
+import ActorListStyle from './actorList.style'
 
 class ActorListComponent extends Component {
 
@@ -12,16 +12,16 @@ class ActorListComponent extends Component {
                 .fetchDataActors()
         }
     
-        getTvShows() {
-            const {people} = this.props;
-            if (people) {
-                return people
+        getActors() {
+            const {actors} = this.props;
+            if (actors) {
+                return actors
                     .dataPeople
-                    .map((person, index) => {
+                    .map((actor, index) => {
                         return (
                             
-                                <View key={index}>
-                                    <Text>{person.person.name}</Text>
+                                <View key={index} style={ActorListStyle.itemList}>
+                                    <Text>{actor.person.name}</Text>
                                 </View>
                         );
                     })
@@ -30,11 +30,11 @@ class ActorListComponent extends Component {
     
         render() {
             return (
-                <View >
+                <View style={ActorListStyle.containerList}>
                 <ScrollView>
-                    {this.props.people.isFeching && <Text>Loading</Text>}
-                    {this.props.people.data.length
-                        ? this.getTvShows()
+                    {this.props.actors.isFeching && <Text>Loading</Text>}
+                    {this.props.actors.data.length
+                        ? this.getActors()
                         : null}
                         </ScrollView>
                 </View>
@@ -44,7 +44,7 @@ class ActorListComponent extends Component {
 
 const mapStateToProps = state => {
     return {
-        people: state.data
+        actors: state.data
     }
 }
 
