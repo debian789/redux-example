@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
-import {fetchData} from '../actions'
+import {fetchData} from '../../actions'
 
 class ShowListComponent extends Component {
     componentWillMount() {
@@ -43,6 +43,7 @@ class ShowListComponent extends Component {
 }
 
 const mapStateToProps = state => {
+    debugger
     return {
         // state.superheroes es el nombre que se definio en reducer/superheroes.js
         // superheroes: state.superheroes
@@ -51,6 +52,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
+    debugger
     return {
         fetchData: () => {
             return dispatch(fetchData())
