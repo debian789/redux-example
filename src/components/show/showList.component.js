@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import {fetchData} from '../../actions'
+import ShowListStyle from './showList.style'
 
 class ShowListComponent extends Component {
     componentWillMount() {
@@ -18,7 +19,7 @@ class ShowListComponent extends Component {
                 .map((tv, index) => {
                     return (
                         
-                            <View key={index}>
+                            <View key={index} style={ShowListStyle.itemList}>
                                 <Text>{tv.show.name}</Text>
                             </View>
                     );
@@ -28,9 +29,7 @@ class ShowListComponent extends Component {
 
     render() {
         return (
-            <View style={{
-                backgroundColor: 'red'
-            }}>
+            <View style={ShowListStyle.containerList}>
             <ScrollView>
                 {this.props.dataTvMaze.isFeching && <Text>Loading</Text>}
                 {this.props.dataTvMaze.data.length
@@ -43,16 +42,12 @@ class ShowListComponent extends Component {
 }
 
 const mapStateToProps = state => {
-    debugger
     return {
-        // state.superheroes es el nombre que se definio en reducer/superheroes.js
-        // superheroes: state.superheroes
         dataTvMaze: state.data
     }
 }
 
 const mapDispatchToProps = dispatch => {
-    debugger
     return {
         fetchData: () => {
             return dispatch(fetchData())

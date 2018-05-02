@@ -25,7 +25,7 @@ class TapBarComponent extends Component {
 
     _renderHeader = props => (<TabBar {...props}/>)
 
-    _renderScene = SceneMap({shows: ShowListComponent, actors: ShowListComponent})
+    _renderScene = SceneMap({shows: ShowListComponent, actors: ActorListComponent})
 
     render() {
         return (<TabViewAnimated
@@ -50,5 +50,7 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(TapBarComponent)
